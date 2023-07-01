@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
     <node name="rosdronecan" pkg="ros_dronecan" type="ros_dronecan.py" output="screen">
+        <param name="can_interface" value="can1" />
+        <param name="bitrate" value="1000000" />
+        <param name="node_id" value="127" />
     </node>
 </launch>
