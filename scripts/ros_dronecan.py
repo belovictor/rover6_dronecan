@@ -25,7 +25,8 @@ class RosDronecan():
             try:
                 self.node.spin(1)
             except dronecan.transport.TransferError:
-                rospy.logerr("dronecan transfer error")
+                pass
+                # rospy.logerr("dronecan transfer error")
         self.node.close()
         rospy.loginfo("Dronecan gateway closed")
     
@@ -36,6 +37,7 @@ class RosDronecan():
         battery_status.current = event.message.current
         battery_status.percentage = event.message.state_of_charge_pct
         battery_status.temperature = event.message.temperature - 273.15
+        battery_status.power_supply_status = 2
         self._ros_pub_battery_state.publish(battery_status)
 
 if __name__ == "__main__":
