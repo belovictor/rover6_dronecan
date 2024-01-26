@@ -5,6 +5,7 @@
         <param name="can_interface" type="string" value="can0" />
         <param name="node_id" type="int" value="127" />
         <param name="bitrate" type="int" value="1000000" />
+        <param name="enable_nodeid_server" type="boolean" value="True" />
         <!-- End of CAN bus/dronecan parameters -->
         <!-- BatteryInfo parameters -->
         <!-- current_offset will be added to from BatteryInfo current -->
