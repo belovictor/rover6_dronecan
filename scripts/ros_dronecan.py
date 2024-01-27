@@ -69,6 +69,8 @@ class RosDronecan():
                 battery_status.power_supply_status = BatteryState.POWER_SUPPLY_STATUS_DISCHARGING
         if self.calculate_percentage:
             battery_status.percentage = (battery_status.voltage - self.battery_empty) / (self.battery_full - self.battery_empty) * 100
+            if battery_status.percentage > 100:
+                battery_status.percentage = 100.0
         else:
             battery_status.percentage = event.message.state_of_charge_pct
         self._ros_pub_battery_state.publish(battery_status)
