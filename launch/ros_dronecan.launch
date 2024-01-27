@@ -8,8 +8,10 @@
         <param name="enable_nodeid_server" type="boolean" value="True" />
         <!-- End of CAN bus/dronecan parameters -->
         <!-- BatteryInfo parameters -->
-        <!-- current_offset will be added to from BatteryInfo current -->
+        <!-- current_offset will be added to BatteryInfo current -->
         <param name="current_offset" type="double" value="0.0" />
+        <!-- voltage_offset will be added to BatteryInfo voltage -->
+        <param name="voltage_offset" type="double" value="0.0" />
         <!-- if calculate_percentage is true node will calculate percentage from BatteryInfo voltage-->
         <param name="calculate_percentage" type="boolean" value="true" />
         <!-- cell voltage when empty -->

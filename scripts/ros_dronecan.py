@@ -12,6 +12,7 @@ class RosDronecan():
         self.bitrate = rospy.get_param('~bitrate', 1000000)
         self.enable_nodeid_server = rospy.get_param('~enable_nodeid_server', False)
         self.current_offset = rospy.get_param('~current_offset', 0.0)
+        self.voltage_offset = rospy.get_param('~voltage_offset', 0.0)
         self.calculate_percentage = rospy.get_param('~calculate_percentage', False)
         self.cell_empty = rospy.get_param('~cell_empty', 3.3)
         self.cell_full = rospy.get_param('~cell_full', 4.2)
@@ -50,7 +51,7 @@ class RosDronecan():
     def node_battery_status_callback(self, event):
         # rospy.loginfo(dronecan.to_yaml(event))
         battery_status = BatteryState()
-        battery_status.voltage = event.message.voltage
+        battery_status.voltage = event.message.voltage + self.voltage_offset
         battery_status.current = event.message.current + self.current_offset
         if self.report_temperature:
             battery_status.temperature = event.message.temperature - 273.15
@@ -67,7 +68,7 @@ class RosDronecan():
             else:
                 battery_status.power_supply_status = BatteryState.POWER_SUPPLY_STATUS_DISCHARGING
         if self.calculate_percentage:
-            battery_status.percentage = (event.message.voltage - self.battery_empty) / (self.battery_full - self.battery_empty) * 100
+            battery_status.percentage = (battery_status.voltage - self.battery_empty) / (self.battery_full - self.battery_empty) * 100
         else:
             battery_status.percentage = event.message.state_of_charge_pct
         self._ros_pub_battery_state.publish(battery_status)
