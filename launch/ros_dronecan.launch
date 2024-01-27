@@ -20,6 +20,8 @@
         <param name="cell_num" type="int" value="6" />
         <!-- if negative current means charging the battery -->
         <param name="negative_charge" type="boolean" value="true" />
+        <!-- report temperature from BatteryInfo -->
+        <param name="report_temperature" type="boolean" value="false" />
         <!-- End of BatteryInfo parameters -->
     </node>
 </launch>

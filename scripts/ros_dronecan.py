@@ -17,6 +17,7 @@ class RosDronecan():
         self.cell_full = rospy.get_param('~cell_full', 4.2)
         self.cell_num = rospy.get_param('~cell_num', 6)
         self.negative_charge = rospy.get_param('~calculate_percentage', True)
+        self.report_temperature = rospy.get_param('~report_temperature', False)
         self.battery_empty = self.cell_empty * self.cell_num
         self.battery_full = self.cell_full * self.cell_num
         self.node_monitor = None
@@ -51,7 +52,10 @@ class RosDronecan():
         battery_status = BatteryState()
         battery_status.voltage = event.message.voltage
         battery_status.current = event.message.current + self.current_offset
-        battery_status.temperature = event.message.temperature - 273.15
+        if self.report_temperature:
+            battery_status.temperature = event.message.temperature - 273.15
+        else:
+            battery_status.temperature = 0.0
         if battery_status.current > 0:
             if self.negative_charge:
                 battery_status.power_supply_status = BatteryState.POWER_SUPPLY_STATUS_DISCHARGING
