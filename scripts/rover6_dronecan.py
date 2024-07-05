@@ -1,12 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import rospy
 import dronecan
 from sensor_msgs.msg import BatteryState
 
-class RosDronecan():
+class Rover6Dronecan():
     def __init__(self):
-        rospy.loginfo("Setting Up the dronecan bridge...")
+        rospy.loginfo("Setting Up the rover6 dronecan bridge...")
         self.can_interface = rospy.get_param('~can_interface', 'can0')
         self.node_id = rospy.get_param('~node_id', 127)
         self.bitrate = rospy.get_param('~bitrate', 1000000)
@@ -25,7 +25,7 @@ class RosDronecan():
         self.dynamic_node_id_allocator = None
     
     def run(self):
-        rospy.loginfo("Starting dronecan bridge on interface %s", self.can_interface)
+        rospy.loginfo("Starting rover6 dronecan bridge on interface %s", self.can_interface)
         self._ros_pub_battery_state = rospy.Publisher('/battery_state', BatteryState, queue_size=5)
         node_info = dronecan.uavcan.protocol.GetNodeInfo.Response()
         node_info.name = "org.dronecan.rosdronecan"
@@ -46,7 +46,7 @@ class RosDronecan():
                 pass
                 # rospy.logerr("dronecan transfer error")
         self.node.close()
-        rospy.loginfo("Dronecan gateway closed")
+        rospy.loginfo("Rover6 dronecan gateway closed")
     
     def node_battery_status_callback(self, event):
         # rospy.loginfo(dronecan.to_yaml(event))
@@ -78,6 +78,6 @@ class RosDronecan():
         self._ros_pub_battery_state.publish(battery_status)
 
 if __name__ == "__main__":
-    rospy.init_node('rosdronecan')
-    bridge = RosDronecan()
+    rospy.init_node('rover6_dronecan')
+    bridge = Rover6Dronecan()
     bridge.run()
