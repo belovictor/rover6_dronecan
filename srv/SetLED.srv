@@ -1,0 +1,6 @@
+uint8 channel
+std_msgs/ColorRGBA color1
+std_msgs/ColorRGBA color2
+uint8 effect
+---
+bool success

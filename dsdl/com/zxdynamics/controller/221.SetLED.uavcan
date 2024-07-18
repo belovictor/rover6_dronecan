@@ -1,0 +1,18 @@
+uint8 CHANNEL_FRONT = 0
+uint8 CHANNEL_REAR = 1
+uint8 CHANNEL_FLAG = 2
+
+uint8 EFFECT_OFF = 0
+uint8 EFFECT_FILL = 1
+uint8 EFFECT_BLINK = 2
+uint8 EFFECT_BLINK_FAST = 3
+uint8 EFFECT_FLASH = 4
+uint8 EFFECT_DOUBLE_BLINK = 5
+uint8 EFFECT_GLOW = 6
+
+uint8 channel
+RGB888 color1
+RGB888 color2
+uint8 effect
+
+---

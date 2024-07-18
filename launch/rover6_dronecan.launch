@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-    <node name="rover6_dronecan" pkg="rover6_dronecan" type="rover6_dronecan.py" output="screen">
+    <node name="rover6_dronecan" pkg="rover6_dronecan" type="rover6_dronecan_node.py" output="screen">
         <!-- CAN bus/dronecan parameters -->
         <param name="can_interface" type="string" value="vcan0" />
-        <param name="node_id" type="int" value="127" />
+        <param name="node_id" type="int" value="124" />
         <param name="bitrate" type="int" value="1000000" />
         <param name="enable_nodeid_server" type="boolean" value="True" />
+        <param name="controller_node_id" type="int" value="97" />
         <!-- End of CAN bus/dronecan parameters -->
         <!-- BatteryInfo parameters -->
         <!-- current_offset will be added to BatteryInfo current -->

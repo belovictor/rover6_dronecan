@@ -1,0 +1,7 @@
+uint8 LID_CLOSE = 0
+uint8 LID_OPEN = 1
+uint8 LID_STOP = 2
+
+uint8 state
+
+---

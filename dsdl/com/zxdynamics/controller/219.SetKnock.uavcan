@@ -1,0 +1,6 @@
+bool KNOCK_DISABLED = false
+bool KNOCK_ENABLED = true
+bool state
+
+---
+

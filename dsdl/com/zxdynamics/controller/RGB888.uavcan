@@ -1,0 +1,8 @@
+#
+# Nested type.
+# RGB color in the standard 8-8-8 24-bit palette.
+#
+
+uint8 red
+uint8 green
+uint8 blue

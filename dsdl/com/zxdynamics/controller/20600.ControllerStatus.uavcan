@@ -1,0 +1,29 @@
+float16 motor1_current # [Ampere]
+float16 motor2_current # [Ampere]
+float16 motor1_voltage # [Volt]
+float16 motor2_voltage # [Volt]
+
+float16 base_sensor_angle # [Degree]
+float16 lid_sensor_angle  # [Degree]
+float16 lid_angle         # [Degree]
+
+uint8 LID_STATE_IDLE = 0
+uint8 LID_STATE_OPENING = 1
+uint8 LID_STATE_OPEN = 2
+uint8 LID_STATE_CLOSING = 3
+uint8 LID_STATE_CLOSED = 4
+uint8 LID_STATE_STUCK = 5
+uint8 LID_STATE_SET_OPEN = 6
+uint8 LID_STATE_SET_CLOSE = 7
+uint8 lid_state
+
+uint8 ERROR_NO_ERROR = 0
+uint8 ERROR_NO_INA219_1 = 1
+uint8 ERROR_NO_INA219_2 = 2
+uint8 ERROR_NO_BASE_BNO = 4
+uint8 ERROR_NO_LID_BNO = 8
+uint8 ERROR_LID_OPEN_ERROR = 16
+uint8 ERROR_LID_CLOSE_ERROR = 32
+uint8 ERROR_LID_BLOCKED = 64
+uint8 ERROR_STARTUP_ERROR = 128
+uint8 controller_error
