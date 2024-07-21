@@ -101,8 +101,8 @@ class Rover6Dronecan():
         return resp
     
     def set_led_service(self, req: SetLEDRequest):
-        color1 = [req.color1.r * 0xFF, req.color1.g * 0xFF, req.color1.b * 0xFF]
-        color2 = [req.color2.r * 0xFF, req.color2.g * 0xFF, req.color2.b * 0xFF]
+        color1 = [round(req.color1.r * 0xFF), round(req.color1.g * 0xFF), round(req.color1.b * 0xFF)]
+        color2 = [round(req.color2.r * 0xFF), round(req.color2.g * 0xFF), round(req.color2.b * 0xFF)]
         self.send_setled_command(self.controller_node_id, req.channel, req.effect, color1, color2)
         resp = SetLEDResponse()
         resp.success = True
